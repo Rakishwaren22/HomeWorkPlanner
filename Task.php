@@ -47,10 +47,47 @@
     $rows=mysqli_fetch_array($query);
     $id=$rows["userid"];
     
+    
     $task= mysqli_query($con, "CALL taskout('$id')")or die("Error: " . mysqli_error($con));
     
     
-    
+   ?>
+
+<!--###############################################################################################################################################-->
+
+<!-- Edit Task -->
+<?php
+     
+ $con = mysqli_connect("localhost:3306","root","", "test");
+ 
+ 
+ if(isset($_POST["insert"]))
+ {
+     
+           
+          
+           $query= "UPDATE task SET duedate='".$_POST["duedate"]."', progress='".$_POST["progress"]."', detail='".$_POST["details"]."' WHERE taskid='".$_POST["task_id"]."'";
+           $message ='Data Updated';
+           
+           if(mysqli_query($con, $query))
+           {
+               header("location:user.php");
+               
+               
+           }
+           
+           else{
+               
+               echo "Error" . mysqli_error($con);
+           }
+           
+           
+           
+                  // success!
+               
+       }
+
+?>
 
  
       
