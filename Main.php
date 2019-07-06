@@ -12,6 +12,13 @@ else
     
 
 ?>
+ <?php
+      
+    $userid=$_SESSION['login'];
+    $con = mysqli_connect("localhost:3306","root","", "test");
+    $query=mysqli_query($con,"select Username from userinfo where email='$userid'");
+    while($row=mysqli_fetch_array($query))
+{?>
 
 
 <html>
@@ -33,6 +40,7 @@ else
          
         <title></title>
         <div id="mySidenav" class="sidenav">
+            
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">Home</a>
             <a href="#">Calendar</a>
@@ -43,22 +51,13 @@ else
 
         <nav class="navbar navbar-expand-sm bg-light navbar-light">
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+            <span style="margin-left: 90%; "><h4><?php echo htmlentities($row['Username']);?></h4>
+                 <?php } ?></span>
         </nav>
     </head> 
    
-    <body>
-    <?php
-    
-        echo "Hello world";
-      
-        $userid=$_SESSION['login'];
-        $con = mysqli_connect("localhost:3306","root","", "test");
-        $query=mysqli_query($con,"select Username from userinfo where Email='$userid'");
-        while($row=mysqli_fetch_array($query))
-        {?>
-        
-        <h3>Welcome : <?php echo htmlentities($row['Username']);?></h3>
-        <?php } ?>
+    <body class="pbody">
+   
     
     
     </body>
