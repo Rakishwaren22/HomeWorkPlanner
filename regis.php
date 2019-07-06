@@ -14,8 +14,7 @@ require('Config.php');
            $res->bind_param('sss', $_POST["username"],$_POST["email"],$_POST["password"]);
            
 
-    if ($_POST["password"] === $_POST["password_confirm"])
-               {
+    if ($_POST["password"] === $_POST["password_confirm"]) {
                   // success!
                 if ($res->execute())
                  {
@@ -57,7 +56,15 @@ require('Config.php');
          if($num>0)
          {
              $_SESSION['login']=$_POST['l_email'];
-             header("location:Main.php");
+             if($email == "admin")
+                 {
+                 header("location:admin.php");
+             }
+             else
+                 {
+                  header("location:user.php");
+             }
+            
          }
          else
          {
