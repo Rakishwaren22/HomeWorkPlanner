@@ -42,6 +42,36 @@
                     <div class="card-body" style=" background-color: rgb(0,0,0); opacity: 0.95; padding:20px">
                     <?php
                     
+
+                   
+                     if ($task->num_rows > 0)
+                        {
+                             while ($rowt = mysqli_fetch_assoc($task))
+                            {   
+
+                                $taskid=$rowt['taskid'];
+                                $title=$rowt['title'];
+                                $duedate=$rowt['duedate'];
+                                $subject=$rowt['subject'];
+                                $progress=$rowt['progress'];
+                                $detail=$rowt['detail'];
+                    ?>
+                        
+                        
+                         
+                            <div  class="card bg-primary view_data" style="height:12%" type="button"  name="view" value="view" id="<?php echo $taskid;?>"   data-toggle="modal" >
+                            <div class="card-body" style="">
+                                
+                                <div class="w3-left"><span class="card-text text-white">Title: <?php echo $title; ?></span></div>
+                                <div class="w3-right"><span class="card-text text-white" >Due: <?php echo  $duedate; ?></span></div><br>
+                                 <div class="w3-left"><span class="subject  text-white" >Subject: <?php echo $subject; ?></span></div>
+                                <div class="w3-right"><span class="card-text text-white">Progress: <?php echo $progress; ?>%</span></div>  
+                            </div>
+                        </div>
+                        
+                            
+                       
+
                      if ($task->num_rows > 0)
                         {
                              while ($rowt = mysqli_fetch_assoc($task))
@@ -59,11 +89,13 @@
                                 <div class="w3-right"><span class="card-text text-white">Progress: <?php echo $rowt['progress'];?>%</span></div>  
                             </div>
                         </div>
+
                         <br>
 
                     
                      <?php
                              }
+
                         }
                         
                         ?>
@@ -88,7 +120,6 @@
     
     
 </body>
-
 
 
 
@@ -158,6 +189,20 @@
      </form>
  </div>
 
+<!--######################################################################################################################################################################-->
+         
+ <!--####################################################################################################################################################################-->
+ <!-- Task update -->
+  <!-- The Modal -->
+  <div class="modal fade" id="dataModal" >
+       <form  action="" method="post">
+     <div class="modal-dialog modal-dialog-centered">
+           
+      
+					
+         <div class="modal-content" id="task_detail">
+             
+           
  
  
  <!-- Task update -->
@@ -165,6 +210,7 @@
   <div class="modal fade" id="task">
      <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
+
       
              <!-- Modal Header -->
              <div class="modal-header">
@@ -173,17 +219,40 @@
              </div>
         
              <!-- Modal body -->
+
+             <div class="modal-body" >
+                 
+                 <div class="card" >
+
              <div class="modal-body">
                  
                      <div class="card" >
+
                     <div class="card-header" style=" height:15%">
                         <h5>Due Date</h5>
                     </div>
                     <div class="card-body" style=" background-color: rgb(231, 234, 229)">
+
+                        <input type="date" class="form-control" id="duedate" name="duedate">
+                     
+                    </div>
+                </div>
+                 
+                 <div class="card" >
+                         <div class="card-header" style=" height:15%">
+                                <h5>Detail:</h5>
+                                
+                         </div>
+                     <div class="card-body" style=" background-color: rgb(231, 234, 229)">
+                         <textarea  class="form-control" rows="5"  id="details" name="details"></textarea>
+                     </div>
+                 </div>     
+
                        <span>Date</span>
                     </div>
                 </div>
                  
+
                  
                   <div class="card" >
                     <div class="card-header" style=" height:15%">
@@ -192,8 +261,13 @@
                     <div class="card-body" style=" background-color: rgb(231, 234, 229)">
                         
                        <div class="slidecontainer">
+
+                           <input type="range"  min="1" max="100" id="progress" name="progress"  value="myRnage" class="slider" >
+                        <p>Percentage: <span id="set"></span>%</p>
+
                         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
                         <p>Percentage: <span id="demo"></span>%</p>
+
                      </div>
                     </div>
                 </div>
@@ -204,12 +278,58 @@
         
              <!-- Modal footer -->
              <div class="modal-footer">
+
+                 <input type="hidden" name="task_id" id="task_id" />
+                  <button type="button" class="btn btn-success" data-dismiss="modal">Completed</button>
+                  <button type="submit" class="btn btn-secondary" name="insert" id="insert" value="Update" >Update</button>
+
                   <button type="button" class="btn btn-success" data-dismiss="modal">Completed</button>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Update</button>
+
                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
              </div>
          </div>
      </div>
+
+       </form>
+  </div>
+  
+  <script>
+      $(document).ready(function(){
+          $(document).on('click', '.view_data', function(){
+              var task_id = $(this).attr("id");
+              
+              $.ajax({
+                  url:"fetch.php",
+                  method:"POST",
+                  data:{task_id:task_id},
+                  dataType:"json",
+                  success:function(data){
+                      $('#duedate').val(data.duedate);
+                      $('#progress').val(data.progress);
+                      $("#details").val(data.detail);
+                      $('#task_id').val(data.taskid);
+                      $('#insert').val("Update");
+                      
+                      $('#dataModal').modal('show');
+                  }
+              });
+            
+               
+          });
+              
+      });
+  
+  
+  
+  </script>
+ <!--####################################################################################################################################################################--> 
+  
+  
+  <script>
+var slider = document.getElementById("progress");
+var output = document.getElementById("set");
+=======
   </div>
   
   
@@ -218,6 +338,7 @@
   <script>
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
+
 output.innerHTML = slider.value;
 
 slider.oninput = function() {
