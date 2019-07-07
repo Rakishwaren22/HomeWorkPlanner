@@ -8,7 +8,11 @@
 
         require ('notes.php');
 
+
+        require ('notes.php');
+
        
+
 
        
         
@@ -80,6 +84,7 @@
                     <?php
                     
 
+                      
                      if ($task->num_rows > 0)
                         {
                              while ($rowt = mysqli_fetch_assoc($task))
@@ -111,6 +116,7 @@
 
 
 
+
                      if ($task->num_rows > 0)
                         {
                              while ($rowt = mysqli_fetch_assoc($task))
@@ -135,6 +141,7 @@
                                 <div class="w3-right"><span class="card-text text-white">Progress: <?php echo $progress; ?>%</span></div>  
                             </div>
                         </div>
+
 
 
 
@@ -188,7 +195,6 @@
 
 
 <!--####################################################################################################################################################################-->
-
 
 <!-- The Add New Task -->
  <!-- The Modal -->
@@ -260,9 +266,11 @@
 
 
 
+
 <!--######################################################################################################################################################################-->
          
  <!--####################################################################################################################################################################-->
+
  <!-- Task update -->
   <!-- The Modal -->
   <div class="modal fade" id="dataModal" >
@@ -274,6 +282,7 @@
          <div class="modal-content" id="task_detail">
              
            
+
 
 
  
@@ -297,6 +306,7 @@
 
 
 
+
       
              <!-- Modal Header -->
              <div class="modal-header">
@@ -310,6 +320,7 @@
                  <div class="card" >
 
 
+
                    
 
 
@@ -320,6 +331,7 @@
              <div class="modal-body">
                  
                      <div class="card" >
+
 
 
 
@@ -343,6 +355,7 @@
                          <textarea  class="form-control" rows="5"  id="details" name="details"></textarea>
                      </div>
                  </div>     
+
 
                
 
@@ -371,6 +384,7 @@
 
 
 
+
                  
                   <div class="card" >
                     <div class="card-header" style=" height:15%">
@@ -386,6 +400,7 @@
                            <input type="range"  min="1" max="100" id="progress" name="progress"  value="myRnage" class="slider" >
                         <p>Percentage: <span id="set"></span>%</p>
 
+
                          
 
 
@@ -394,6 +409,7 @@
 
                         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
                         <p>Percentage: <span id="demo"></span>%</p>
+
 
 
 
@@ -408,8 +424,8 @@
              <!-- Modal footer -->
              <div class="modal-footer">
                  <input type="hidden" name="task_id" id="task_id" />
-
                   <button type="submit" class="btn btn-success" name="delete" id="delete" onClick="return confirm('Are you sure compeleted the task ?')">Completed</button>
+
 
 
                   <button type="submit" class="btn btn-success" name="delete" id="delete" onClick="return confirm('Are you sure compeleted the task ?')">Completed</button>
@@ -427,6 +443,7 @@
 
                  <input type="hidden" name="task_id" id="task_id" />
                   <button type="button" class="btn btn-success" data-dismiss="modal">Completed</button>
+
 
                   <button type="submit" class="btn btn-secondary" name="insert" id="insert" value="Update" >Update</button>
                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -522,6 +539,7 @@
 <!--######################################################################################################################################################################-->
 
 
+
 <!--####################################################################################################################################################################-->
  <!-- Notes update -->
   <!-- The Modal -->
@@ -592,17 +610,118 @@
      </div>
        </form>
 
+
+<!--####################################################################################################################################################################-->
+ <!-- Notes update -->
+  <!-- The Modal -->
+  <div class="modal fade" id="notesModal" >
+       <form  action="" method="post">
+     <div class="modal-dialog modal-dialog-centered">
+           
+      
+					
+         <div class="modal-content" id="task_detail">
+             
+           
+      
+             <!-- Modal Header -->
+             <div class="modal-header  bg-warning">
+                 <h4 class="modal-title"><span></span>Notes</h4>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+        
+             <!-- Modal body -->
+             <div class="modal-body" >
+                 
+                 <div class="card bg-warning" >
+                    <div class="card-header" style=" height:15%">
+                        <h5>Notes Title:</h5>
+                    </div>
+                    <div class="card-body" style=" background-color: rgb(231, 234, 229)">
+                        <input type="text"  class="form-control" id="notesTitle" name="notesTitle">
+                     
+                    </div>
+                </div>
+                 
+                 
+                   <div class="card bg-warning" >
+                    <div class="card-header" style=" height:15%">
+                        <h5>Notes Type:</h5>
+                    </div>
+                    <div class="card-body" style=" background-color: rgb(231, 234, 229)">
+                        <input type="text"  class="form-control" id="notesType" name="notesType">
+                     
+                    </div>
+                </div>
+                 
+                 <div class="card bg-warning" >
+                         <div class="card-header" style=" height:15%">
+                                <h5>Notes:</h5>
+                                
+                         </div>
+                     <div class="card-body" style=" background-color: rgb(231, 234, 229)">
+                         <textarea  class="form-control" rows="10" style="height:20%" id="notesDetail" name="notesDetail"></textarea>
+                     </div>
+                 </div>     
+                 
+                 
+                 
+                 
+                 
+             </div>
+        
+             <!-- Modal footer -->
+             <div class="modal-footer bg-warning">
+                 <input type="hidden" name="notes_id" id="notes_id" />
+                  <button type="submit" class="btn btn-success" name="notesdelete" id="notesdelete" onClick="return confirm('Are you sure want to delete this notes ?')">Delete</button>
+                  <button type="submit" class="btn btn-secondary" name="notesinsert" id="notesinsert" value="notesUpdate" >Save</button>
+                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+             </div>
+         </div>
+     </div>
+       </form>
   </div>
   
+
+  <script>
+      $(document).ready(function(){
+          $(document).on('click', '.view_notes', function(){
+              var notes_id = $(this).attr("id");
+              
+              $.ajax({
+                  url:"fetchnotes.php",
+                  method:"POST",
+                  data:{notes_id:notes_id},
+                  dataType:"json",
+                  success:function(data){
+                      $('#notesTitle').val(data.notestitle);
+                      $('#notesType').val(data.notestype);
+                      $('#notesDetail').val(data.notesdetail);
+                      $('#notes_id').val(data.notesid);
+                      $('#notesinsert').val("notesUpdate");
+                      $('#notesModal').modal('show');
+                  }
+              });
+            
+               
+          });
+              
+      });
   
+  
+  
+  </script>
+
  <!--####################################################################################################################################################################-->
   
  <script>
 var slider = document.getElementById("progress");
 var output = document.getElementById("set");
 
+
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
+
 
 
 
