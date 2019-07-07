@@ -1,5 +1,5 @@
 
-
+//function for check confirm password and password
 function Validate() {
         var password = document.getElementById("password").value;
         var confirmPassword = document.getElementById("password_confirm").value;
@@ -38,3 +38,5 @@ function mypassword() {
     y.type = "password";
   }
 }
+
+
