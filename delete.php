@@ -29,6 +29,7 @@ if(isset($_POST["delete"]))
 ?>
  
 
+
 <?php
 
 $connect = mysqli_connect("localhost:3306","root","", "test");
@@ -58,3 +59,4 @@ if(isset($_POST["notesdelete"]))
        }
 
 ?>
+
