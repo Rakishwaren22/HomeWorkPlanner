@@ -4,6 +4,7 @@
         <?php
         include ('Main.php'); 
         require ('Task.php');
+        require ('delete.php');
        
        
         
@@ -53,9 +54,8 @@
                     <?php
                     
 
-
-
-                   
+                      
+                      
                      if ($task->num_rows > 0)
                         {
                              while ($rowt = mysqli_fetch_assoc($task))
@@ -85,6 +85,7 @@
                        
 
 
+
                      if ($task->num_rows > 0)
                         {
                              while ($rowt = mysqli_fetch_assoc($task))
@@ -110,12 +111,14 @@
                             </div>
                         </div>
 
+
                         <br>
 
                     
                      <?php
                              }
-
+                             
+                             
                         }
                         
                         ?>
@@ -158,6 +161,7 @@
 
 
 
+<!--####################################################################################################################################################################-->
 
 
 <!-- The Add New Task -->
@@ -223,7 +227,6 @@
      </div>
      </form>
  </div>
-
 <!--######################################################################################################################################################################-->
          
  <!--####################################################################################################################################################################-->
@@ -243,6 +246,7 @@
          <div class="modal-content" id="task_detail">
              
            
+
  
  
 
@@ -262,6 +266,7 @@
          <div class="modal-content">
 
 
+
       
              <!-- Modal Header -->
              <div class="modal-header">
@@ -270,10 +275,11 @@
              </div>
         
              <!-- Modal body -->
-
              <div class="modal-body" >
                  
                  <div class="card" >
+
+                   
 
 
              <div class="modal-body" >
@@ -285,11 +291,11 @@
                      <div class="card" >
 
 
+
                     <div class="card-header" style=" height:15%">
                         <h5>Due Date</h5>
                     </div>
                     <div class="card-body" style=" background-color: rgb(231, 234, 229)">
-
                         <input type="date" class="form-control" id="duedate" name="duedate">
                      
                     </div>
@@ -304,6 +310,8 @@
                          <textarea  class="form-control" rows="5"  id="details" name="details"></textarea>
                      </div>
                  </div>     
+
+               
 
                         <input type="date" class="form-control" id="duedate" name="duedate">
                      
@@ -326,6 +334,7 @@
                  
 
 
+
                  
                   <div class="card" >
                     <div class="card-header" style=" height:15%">
@@ -334,9 +343,10 @@
                     <div class="card-body" style=" background-color: rgb(231, 234, 229)">
                         
                        <div class="slidecontainer">
-
                            <input type="range"  min="1" max="100" id="progress" name="progress"  value="myRnage" class="slider" >
                         <p>Percentage: <span id="set"></span>%</p>
+
+                         
 
 
                            <input type="range"  min="1" max="100" id="progress" name="progress"  value="myRnage" class="slider" >
@@ -344,6 +354,7 @@
 
                         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
                         <p>Percentage: <span id="demo"></span>%</p>
+
 
                      </div>
                     </div>
@@ -355,8 +366,10 @@
         
              <!-- Modal footer -->
              <div class="modal-footer">
-
                  <input type="hidden" name="task_id" id="task_id" />
+
+                  <button type="submit" class="btn btn-success" name="delete" id="delete" onClick="return confirm('Are you sure compeleted the task ?')">Completed</button>
+
                   <button type="submit" class="btn btn-success">Completed</button>
                   <button type="submit" class="btn btn-secondary" name="insert" id="insert" value="Update" >Update</button>
                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -368,16 +381,12 @@
 
                  <input type="hidden" name="task_id" id="task_id" />
                   <button type="button" class="btn btn-success" data-dismiss="modal">Completed</button>
+
                   <button type="submit" class="btn btn-secondary" name="insert" id="insert" value="Update" >Update</button>
-
-                  <button type="button" class="btn btn-success" data-dismiss="modal">Completed</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Update</button>
-
                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
              </div>
          </div>
      </div>
-
        </form>
   </div>
   
@@ -416,6 +425,7 @@
   <script>
 var slider = document.getElementById("progress");
 var output = document.getElementById("set");
+
 
 
   </div>
@@ -459,6 +469,7 @@ var output = document.getElementById("set");
 
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
+
 
 
 output.innerHTML = slider.value;
