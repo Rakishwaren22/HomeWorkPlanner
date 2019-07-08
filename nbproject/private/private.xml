@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -13,3 +14,30 @@
         </group>
     </open-files>
 </project-private>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+
+            <file>file:/C:/xampp/htdocs/HomePlanner/style.css</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/regis.php</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/Js/loginPage.js</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/Js/userReset.js</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/Task.php</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/user.php</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/usersetting.php</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/logout.php</file>
+
+            <file>file:/C:/xampp/htdocs/HomePlanner/admin.php</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/Task.php</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/user.php</file>
+
+            <file>file:/C:/xampp/htdocs/HomePlanner/Main.php</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/resetpass.php</file>
+            <file>file:/C:/xampp/htdocs/HomePlanner/login.php</file>
+        </group>
+    </open-files>
+</project-private>
+
