@@ -19,7 +19,11 @@
 
             <a href="../HomePlanner/History.php">History</a>
 
+
+            <a href="../HomePlanner/History.php">History</a>
+
             <a href="#">Calendar</a>
+
 
             <a href="../HomePlanner/usersetting.php">Setting</a>
             <a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout  </a>
@@ -303,6 +307,7 @@
                          <textarea  class="form-control" rows="5"  id="details" name="details"></textarea>
                      </div>
                  </div>     
+
                  
 
                  
@@ -317,6 +322,7 @@
                  </div>     
                  
 
+
                   <div class="card bg-primary" >
                     <div class="card-header" style=" height:15%">
                         <h5>Progress:</h5>
@@ -328,12 +334,16 @@
                            <input type="range"  min="1" max="100" id="progress" name="progress"  value="" class="slider" >
                         <p>Percentage: <span id="demo"></span>%</p>
 
+                           <input type="range"  min="1" max="100" id="progress" name="progress"  value="" class="slider" >
+                        <p>Percentage: <span id="demo"></span>%</p>
+
 
                            <input type="range"  min="1" max="100" id="progress" name="progress"  value="" class="slider" >
                         <p>Percentage: <span id="demo"></span>%</p>
 
                            <input type="range"  min="1" max="100" id="progress" name="progress"  value="myRnage" class="slider" >
                         <p>Percentage: <span id="set"></span>%</p>
+
 
 
                      </div>
@@ -441,6 +451,7 @@
      </form>
  </div>
 <!--#####################################################################################################################################################################-->
+
 
 
 <!--########################################################################---Notes Update Modal---#####################################################################-->
@@ -607,6 +618,7 @@
  </div>
 <!--####################################################################################################################################################################-->
 
+
 <!--########################################################################---Notes Update Modal---#####################################################################-->
  <!-- Exam update -->
   <!-- The Modal -->
@@ -679,6 +691,76 @@
      </div>
        </form>
 
+<!--########################################################################---Notes Update Modal---#####################################################################-->
+ <!-- Notes update -->
+  <!-- The Modal -->
+  <div class="modal fade" id="notesModal" >
+       <form  action="" method="post">
+     <div class="modal-dialog modal-dialog-centered">
+           
+      
+					
+         <div class="modal-content" id="task_detail">
+             
+           
+      
+             <!-- Modal Header -->
+             <div class="modal-header  bg-warning">
+                 <h4 class="modal-title"><span></span>Notes</h4>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+        
+             <!-- Modal body -->
+             <div class="modal-body" >
+                 
+                 <div class="card bg-warning" >
+                    <div class="card-header" style=" height:15%">
+                        <h5>Notes Title:</h5>
+                    </div>
+                    <div class="card-body" style=" background-color: rgb(231, 234, 229)">
+                        <input type="text"  class="form-control" id="notesTitle" name="notesTitle">
+                     
+                    </div>
+                </div>
+                 
+                 
+                   <div class="card bg-warning" >
+                    <div class="card-header" style=" height:15%">
+                        <h5>Notes Type:</h5>
+                    </div>
+                    <div class="card-body" style=" background-color: rgb(231, 234, 229)">
+                        <input type="text"  class="form-control" id="notesType" name="notesType">
+                     
+                    </div>
+                </div>
+                 
+                 <div class="card bg-warning" >
+                         <div class="card-header" style=" height:15%">
+                                <h5>Notes:</h5>
+                                
+                         </div>
+                     <div class="card-body" style=" background-color: rgb(231, 234, 229)">
+                         <textarea  class="form-control" rows="10" style="height:20%" id="notesDetail" name="notesDetail"></textarea>
+                     </div>
+                 </div>     
+                 
+                 
+                 <br>
+                 <input type="file" name="file"/>
+                 
+                 
+             </div>
+        
+             <!-- Modal footer -->
+             <div class="modal-footer bg-warning">
+                 <input type="hidden" name="notes_id" id="notes_id" />
+                  <button type="submit" class="btn btn-success" name="notesdelete" id="notesdelete" onClick="return confirm('Are you sure want to delete this notes ?')">Delete</button>
+                  <button type="submit" class="btn btn-secondary" name="notesinsert" id="notesinsert" value="notesUpdate" >Save</button>
+                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+             </div>
+         </div>
+     </div>
+       </form>
   </div>
   
   <script>
@@ -699,6 +781,7 @@
                       $('#notes_id').val(data.notesid);
                       $('#notesinsert').val("notesUpdate");
                       $('#notesModal').modal('show');
+
  $(document).on('click', '.view_exam', function(){
               var exam_id = $(this).attr("id");
               
@@ -900,6 +983,14 @@
   </script>
  <!--###################################################################################################################################################################-->
 
+
+<!--Task-->
+ <script>
+var sliders = document.getElementById("progress");
+var outputs = document.getElementById("demo");
+outputs.innerHTML = sliders.value;
+
+
 <!--Task-->
  <script>
 var sliders = document.getElementById("progress");
@@ -924,6 +1015,11 @@ output.innerHTML = slider.value;
 slider.oninput = function() {
   output.innerHTML = this.value;
 
+
+sliders.oninput = function() {
+  outputs.innerHTML = this.value;
+}
+</script>
 
 }
 </script>
