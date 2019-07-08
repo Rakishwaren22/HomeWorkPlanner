@@ -7,16 +7,25 @@
         require ('delete.php');
         require ('notes.php');
         require ('exam.php');
+        require ('Completed.php');
        
         
         ?>
             
+        <div id="mySidenav" class="sidenav">
+            
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="../HomePlanner/user.php">Home</a>
+            <a href="../HomePlanner/History.php">History</a>
+            <a href="../HomePlanner/usersetting.php">Setting</a>
+            <a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout  </a>
+        </div>
             
         
           <link rel="stylesheet" href="../HomePlanner/sidepro.css">
           <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+         
     </head>
 <body>
     
@@ -30,7 +39,7 @@
                 <div class="card" style="width: 100%">
                     <div class="card-header" style=" height:15%">
                         <h6><b>  <?php echo "Today:   " .date("l,  "). date("d/m/Y"); ?></b></h6>
-                        <h5>Notes  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addNotes"><i class="fas fa-plus"></i> Add Notes</button></h5>
+                        <h5>Notes  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addNotes"><i  class="fa fa-plus"></i> Add Notes</button></h5>
                        
                     </div>
                     <div class="card-body" style=" background-color: rgb(0,0,0); opacity: 0.95">
@@ -70,7 +79,7 @@
 
                 <div class="card" style="width: 100%">
                     <div class="card-header" style=" height:15%">
-                        <h5>Task <br> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTask"><i class="fas fa-plus"></i> New Task</button></h5>
+                        <h5>Task <br> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTask"><i class="fa fa-plus"></i> New Task</button></h5>
                     </div>
                     
                     <div class="card-body" style=" background-color: rgb(0,0,0); opacity: 0.95; padding:20px">
@@ -83,6 +92,7 @@
                             {   
 
                                 $taskid=$rowt['taskid'];
+                                $type=$rowt['type'];
                                 $title=$rowt['title'];
                                 $duedate=$rowt['duedate'];
                                 $subject=$rowt['subject'];
@@ -95,7 +105,8 @@
                             <div  class="card bg-primary view_data" style="height:12%" type="button"  name="view" value="view" id="<?php echo $taskid;?>"   data-toggle="modal" >
                             <div class="card-body" style="">
                                 
-                                <div class="w3-left"><span class="card-text text-white">Title: <?php echo $title; ?></span></div>
+                                <div class="w3-center"><span class="card-text text-white">Title: <?php echo $title; ?></span></div>
+                                <div class="w3-left"><span class="card-text text-white">Type: <?php echo $type; ?></span></div>
                                 <div class="w3-right"><span class="card-text text-white" >Due: <?php echo  $duedate; ?></span></div><br>
                                  <div class="w3-left"><span class="subject  text-white" >Subject: <?php echo $subject; ?></span></div>
                                 <div class="w3-right"><span class="card-text text-white">Progress: <?php echo $progress; ?>%</span></div>  
@@ -121,7 +132,7 @@
                 
                 <div class="card" style="width: 100%" >
                     <div class="card-header" style=" height:15%">
-                        <h5>Exams Schedule<br> <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addExam"><i class="fas fa-plus"></i> Add Exam</button></h5>
+                        <h5>Exams Schedule<br> <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addExam"><i class="fa fa-plus"></i> Add Exam</button></h5>
                     </div>
                     <div class="card-body" style=" background-color: rgb(0,0,0); opacity: 0.95">
                          <?php
@@ -201,9 +212,14 @@
                      </div>
                      <div class="input-group mb-3 input-group-sm">
                          <div class="input-group-prepend">
-                             <span class="input-group-text">Homework Type</span>
+                             <span class="input-group-text">Type</span>
                          </div>
-                         <input type="text" class="form-control" id="hometype" name="hometype">
+                            <select class="form-control" id="hometype" name="hometype" >
+                              <option>Assignment</option>
+                              <option>Homework</option>
+                              <option>Exercise</option>
+                              <option>Other Task</option>
+                            </select>
                      </div>
                      <div class="input-group mb-3 input-group-sm">
                          <div class="input-group-prepend">
@@ -290,8 +306,8 @@
                     <div class="card-body" style=" background-color: rgb(231, 234, 229)">
                         
                        <div class="slidecontainer">
-                           <input type="range"  min="1" max="100" id="progress" name="progress"  value="myRnage" class="slider" >
-                        <p>Percentage: <span id="set"></span>%</p>
+                           <input type="range"  min="1" max="100" id="progress" name="progress"  value="" class="slider" >
+                        <p>Percentage: <span id="demo"></span>%</p>
                      </div>
                     </div>
                 </div>
@@ -303,7 +319,7 @@
              <!-- Modal footer -->
              <div class="modal-footer bg-primary">
                  <input type="hidden" name="task_id" id="task_id" />
-                  <button type="submit" class="btn btn-success" name="delete" id="delete" onClick="return confirm('Are you sure compeleted the task ?')">Completed</button>
+                  <button type="submit" class="btn btn-success" name="complete" id="complete" onClick="return confirm('Are you sure compeleted the task ?')">Completed</button>
                   <button type="submit" class="btn btn-secondary" name="insert" id="insert" value="Update" >Update</button>
                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
              </div>
@@ -670,12 +686,12 @@
 
 <!--Task-->
  <script>
-var slider = document.getElementById("progress");
-var output = document.getElementById("set");
-output.innerHTML = slider.value;
+var sliders = document.getElementById("progress");
+var outputs = document.getElementById("demo");
+outputs.innerHTML = sliders.value;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
+sliders.oninput = function() {
+  outputs.innerHTML = this.value;
 }
 </script>
 
