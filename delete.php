@@ -10,7 +10,7 @@ if(isset($_POST["delete"]))
            
            if(mysqli_query($connect, $query))
            {
-               header("location:user.php");
+               header("location:History.php");
                
                
            }
@@ -28,7 +28,6 @@ if(isset($_POST["delete"]))
 
 ?>
  
-
 
 <?php
 
@@ -60,3 +59,33 @@ if(isset($_POST["notesdelete"]))
 
 ?>
 
+
+<?php
+
+$connect = mysqli_connect("localhost:3306","root","", "test");
+if(isset($_POST["examdelete"]))
+ {
+     
+           $query= "DELETE FROM exam WHERE examid='".$_POST["exam_id"]."'";
+         
+           $message ='Data Deleted';
+           
+           if(mysqli_query($connect, $query))
+           {
+               header("location:user.php");
+               
+               
+           }
+           
+           else{
+               
+               echo "Error" . mysqli_error($connect);
+           }
+           
+           
+           
+                  // success!
+               
+       }
+
+?>

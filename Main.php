@@ -39,19 +39,12 @@ else
          
          
         <title></title>
-        <div id="mySidenav" class="sidenav">
-            
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">Home</a>
-            <a href="#">Calendar</a>
-            <a href="#">Setting</a>
-            <a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout  </a>
-        </div>
+        
  
 
         <nav class="navbar navbar-expand-sm bg-light navbar-light">
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-            <span style="margin-left: 90%; "><h4><?php echo htmlentities($row['Username']);?></h4>
+            <span style="margin-left: 85%; "><h4>Welcome: <?php echo htmlentities($row['Username']);?></h4>
                  <?php } ?></span>
         </nav>
     </head> 
