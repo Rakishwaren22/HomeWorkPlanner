@@ -19,7 +19,11 @@
           <link rel="stylesheet" href="../HomePlanner/sidepro.css">
           <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+         
+
           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
           
           <script src="Boostrap/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
           <script src="../HomePlanner/js/userReset.js"></script>
@@ -29,7 +33,11 @@
             
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="../HomePlanner/user.php">Home</a>
+
+            <a href="../HomePlanner/History.php">History</a>
+
             <a href="#">Calendar</a>
+
             <a href="../HomePlanner/usersetting.php">Setting</a>
             <a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout  </a>
         </div>
@@ -73,7 +81,11 @@
        
          <div class="input-group mb-3">
              <div class="input-group-prepend">
+
+                <span class="input-group-text">New Password</span>
+
                 <span class="input-group-text">Password</span>
+
             </div>
             <input type="password" name="repassword" id="repassword" class="form-control">
          </div>
@@ -81,7 +93,11 @@
            
            <div class="input-group mb-3">
              <div class="input-group-prepend">
+
+                <span class="input-group-text">Confirm New Password</span>
+
                 <span class="input-group-text">Confirm Password</span>
+
             </div>
                <input type="password" name="repassword_confirm" id="repassword_confirm" class="form-control">
             

@@ -10,7 +10,7 @@ if(isset($_POST["delete"]))
            
            if(mysqli_query($connect, $query))
            {
-               header("location:user.php");
+               header("location:History.php");
                
                
            }
